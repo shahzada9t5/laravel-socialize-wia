@@ -5,9 +5,13 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Shahzada M. Saeed"
+            "name": "Shahzada M. Saeed",
+            "email": "shahzadamsaeed@gmail.com"
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": "^8.2",
+        "laravel/socialite": "^5.2"
+    }
 }
