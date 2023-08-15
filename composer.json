@@ -13,5 +13,17 @@
     "require": {
         "php": "^8.2",
         "laravel/socialite": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "ShahzadaSaeed\\SocializeWia\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ShahzadaSaeed\\SocializeWia\\SocialiteWiaServiceProvider"
+            ]
+        }
     }
 }
