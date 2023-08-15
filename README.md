@@ -14,7 +14,7 @@ composer require shahzada-saeed/laravel-socialize-wia
 Once you install the package, add the next config values in you `config/services.php` configuration file:
 
 ```php
-'cognito' => [
+'wia' => [
     'base_uri' => env('WIA_URI'),
     'client_id' => env('WIA_CLIENT_ID'),
     'client_secret' => env('WIA_CLIENT_SECRET'),
