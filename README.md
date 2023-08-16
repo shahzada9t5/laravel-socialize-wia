@@ -16,8 +16,6 @@ Once you install the package, add the next config values in you `config/services
 ```php
 'wia' => [
     'base_uri' => env('WIA_URI'),
-    'client_id' => env('WIA_CLIENT_ID'),
-    'client_secret' => env('WIA_CLIENT_SECRET'),
     'redirect' => env('WIA_REDIRECT_URI'),
 ],
 ```
