@@ -15,7 +15,7 @@ class SocialiteWiaServiceProvider extends ServiceProvider
     {
         $socialite = $this->app->make(Factory::class);
 
-        $socialite->extend('cognito', function () use ($socialite) {
+        $socialite->extend('wia', function () use ($socialite) {
             $config = config('services.wia');
 
             return $socialite->buildProvider(SocialiteWiaProvider::class, $config);
