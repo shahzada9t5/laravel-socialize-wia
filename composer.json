@@ -1,7 +1,7 @@
 {
     "name": "shahzada-saeed/laravel-socialize-wia",
     "description": "This package extend socialize functionality for SSO Wia",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
