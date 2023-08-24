@@ -7,12 +7,6 @@ use Laravel\Socialite\Two\User;
 
 class SocialiteWiaProvider extends AbstractProvider implements ProviderInterface
 {
-    /**
-     * The separating character for the requested scopes.
-     *
-     * @var string
-     */
-    protected $scopeSeparator = ' ';
 
     /**
      * The scopes being requested.
@@ -23,7 +17,7 @@ class SocialiteWiaProvider extends AbstractProvider implements ProviderInterface
         'read_wia_user'
     ];
     protected $fields = [
-        'id', 'username', 'url', 'first_name', 'last_name', 'bio', 'image'
+        'id', 'name', 'email', 'avatar_image', 'primary_contact'
     ];
 
     /**
@@ -31,7 +25,7 @@ class SocialiteWiaProvider extends AbstractProvider implements ProviderInterface
      */
     public function getWiaUrl()
     {
-        return config('services.wia.base_uri') . '/oauth2';
+        return config('services.wia.base_uri') ;
     }
 
     /**
@@ -42,7 +36,7 @@ class SocialiteWiaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase($this->getWiaUrl() . '/sso', $state);
+        return $this->buildAuthUrlFromBase($this->getWiaUrl() . '/oauth2/sso', $state);
     }
 
     /**
@@ -52,7 +46,7 @@ class SocialiteWiaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl()
     {
-        return config('services.wia.base_uri') . '/api/generate/token?' . http_build_query([
+        return $this->getWiaUrl() . '/api/generate/token?' . http_build_query([
                 'grant_type' => 'authorization_code',
             ]);
     }
@@ -65,7 +59,7 @@ class SocialiteWiaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->post(config('services.wia.base_uri') . '/api/me', [
+        $response = $this->getHttpClient()->post($this->getWiaUrl() . '/api/me', [
             'headers' => [
                 'cache-control' => 'no-cache',
                 'Authorization' => 'Bearer ' . $token,
